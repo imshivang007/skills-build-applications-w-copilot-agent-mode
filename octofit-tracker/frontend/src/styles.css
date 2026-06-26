@@ -87,6 +87,10 @@ a {
   gap: 0.5rem;
 }
 
+.metric-card small {
+  color: rgba(19, 34, 56, 0.62);
+}
+
 .metric-card span {
   color: rgba(19, 34, 56, 0.65);
 }
