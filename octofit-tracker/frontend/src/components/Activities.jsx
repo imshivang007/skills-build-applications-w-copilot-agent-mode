@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { api, apiBaseUrl } from '../api.js';
 
+const activitiesApiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities`
+  : 'http://localhost:8000/api/activities';
+
 export function Activities() {
   const [users, setUsers] = useState([]);
   const [activities, setActivities] = useState([]);
@@ -64,6 +68,7 @@ export function Activities() {
           <p className="eyebrow mb-2">Activities</p>
           <h2 className="h3 mb-2">Track workouts and activity logs</h2>
           <p className="mb-0 text-secondary-emphasis">Connected to {apiBaseUrl}</p>
+          <p className="mb-0 text-secondary-emphasis">Endpoint: {activitiesApiEndpoint}</p>
         </div>
         {status ? <div className="alert alert-success mb-0 py-2 px-3">{status}</div> : null}
       </div>

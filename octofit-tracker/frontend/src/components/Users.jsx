@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { api, apiBaseUrl } from '../api.js';
 
+const usersApiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users`
+  : 'http://localhost:8000/api/users';
+
 export function Users() {
   const [users, setUsers] = useState([]);
   const [form, setForm] = useState({ displayName: '', email: '', gradeLevel: '' });
@@ -38,6 +42,7 @@ export function Users() {
           <p className="eyebrow mb-2">Users</p>
           <h2 className="h3 mb-2">Manage student profiles</h2>
           <p className="mb-0 text-secondary-emphasis">API base URL: {apiBaseUrl}</p>
+          <p className="mb-0 text-secondary-emphasis">Endpoint: {usersApiEndpoint}</p>
         </div>
         {status ? <div className="alert alert-success mb-0 py-2 px-3">{status}</div> : null}
       </div>

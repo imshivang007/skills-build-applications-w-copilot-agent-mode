@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { api, apiBaseUrl } from '../api.js';
 
+const teamsApiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams`
+  : 'http://localhost:8000/api/teams';
+
 export function Teams() {
   const [users, setUsers] = useState([]);
   const [teams, setTeams] = useState([]);
@@ -60,6 +64,7 @@ export function Teams() {
           <p className="eyebrow mb-2">Teams</p>
           <h2 className="h3 mb-2">Create teams and assign members</h2>
           <p className="mb-0 text-secondary-emphasis">Connected to {apiBaseUrl}</p>
+          <p className="mb-0 text-secondary-emphasis">Endpoint: {teamsApiEndpoint}</p>
         </div>
         {status ? <div className="alert alert-success mb-0 py-2 px-3">{status}</div> : null}
       </div>

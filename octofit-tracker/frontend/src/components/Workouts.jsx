@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { api, apiBaseUrl } from '../api.js';
 
+const workoutsApiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts`
+  : 'http://localhost:8000/api/workouts';
+
 export function Workouts() {
   const [workouts, setWorkouts] = useState([]);
   const [form, setForm] = useState({ name: '', focusArea: '', targetMinutes: 20 });
@@ -43,6 +47,7 @@ export function Workouts() {
           <p className="eyebrow mb-2">Workouts</p>
           <h2 className="h3 mb-2">Curate workout suggestions</h2>
           <p className="mb-0 text-secondary-emphasis">Connected to {apiBaseUrl}</p>
+          <p className="mb-0 text-secondary-emphasis">Endpoint: {workoutsApiEndpoint}</p>
         </div>
         {status ? <div className="alert alert-success mb-0 py-2 px-3">{status}</div> : null}
       </div>

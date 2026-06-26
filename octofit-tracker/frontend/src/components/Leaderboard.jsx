@@ -2,6 +2,10 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { api, apiBaseUrl } from '../api.js';
 
+const leaderboardApiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard`
+  : 'http://localhost:8000/api/leaderboard';
+
 export function Leaderboard() {
   const [teams, setTeams] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
@@ -54,6 +58,7 @@ export function Leaderboard() {
           <p className="eyebrow mb-2">Leaderboard</p>
           <h2 className="h3 mb-2">Rank teams by season</h2>
           <p className="mb-0 text-secondary-emphasis">Connected to {apiBaseUrl}</p>
+          <p className="mb-0 text-secondary-emphasis">Endpoint: {leaderboardApiEndpoint}</p>
         </div>
         {status ? <div className="alert alert-success mb-0 py-2 px-3">{status}</div> : null}
       </div>
