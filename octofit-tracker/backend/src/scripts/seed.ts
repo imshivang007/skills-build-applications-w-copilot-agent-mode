@@ -1,4 +1,4 @@
-/* Test data seed description: populate octofit_db with sample users, teams, activities, leaderboard entries, and workouts. */
+/* Seed the octofit_db database with test data: populate sample users, teams, activities, leaderboard entries, and workouts. */
 
 import { connectDatabase } from '../config/database.js';
 import { Activity } from '../models/activity.js';
